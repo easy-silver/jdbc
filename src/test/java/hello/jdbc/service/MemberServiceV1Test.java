@@ -27,10 +27,18 @@ class MemberServiceV1Test {
     private MemberServiceV1 memberService;
 
     @BeforeEach
-    void beforeEach() {
+    void before() {
         DriverManagerDataSource dataSource = new DriverManagerDataSource(URL, USERNAME, PASSWORD);
         memberRepository = new MemberRepositoryV1(dataSource);
         memberService = new MemberServiceV1(memberRepository);
+    }
+
+    @AfterEach
+    void after() throws SQLException {
+        memberRepository.delete(MEMBER_A);
+        memberRepository.delete(MEMBER_B);
+        memberRepository.delete(MEMBER_EX);
+
     }
 
     @Test
