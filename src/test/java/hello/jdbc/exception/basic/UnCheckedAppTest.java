@@ -1,10 +1,12 @@
 package hello.jdbc.exception.basic;
 
+import lombok.extern.slf4j.Slf4j;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 import java.sql.SQLException;
 
+@Slf4j
 public class UnCheckedAppTest {
 
     @Test
@@ -14,6 +16,16 @@ public class UnCheckedAppTest {
                 .isInstanceOf(RuntimeSQLException.class);
     }
 
+    @Test
+    void printEx() {
+        Controller controller = new Controller();
+        try {
+            controller.request();
+        } catch (Exception e) {
+            //e.printStackTrace()는 System.out 으로 출력되는 것이라서 실무에서는 log를 사용하여 출력해주는 것이 좋다.
+            log.info("ex", e);
+        }
+    }
 
     static class Controller {
         Service service = new Service();
