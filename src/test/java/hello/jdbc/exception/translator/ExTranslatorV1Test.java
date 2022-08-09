@@ -1,6 +1,5 @@
 package hello.jdbc.exception.translator;
 
-import hello.jdbc.connection.ConnectionConst;
 import hello.jdbc.domain.Member;
 import hello.jdbc.repository.ex.MyDbException;
 import hello.jdbc.repository.ex.MyDuplicateKeyException;
@@ -21,7 +20,6 @@ import static hello.jdbc.connection.ConnectionConst.*;
 
 @Slf4j
 public class ExTranslatorV1Test {
-
 
     Repository repository;
     Service service;
